@@ -2,7 +2,8 @@ import streamlit as st
 import spacy
 from spacy.matcher import Matcher
 import csv
-import fitz  # PyMuPDF
+# import fitz  # PyMuPDF
+import pymupdf
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 from io import BytesIO
@@ -98,7 +99,8 @@ def save_required_skills(required_skills):
 
 # Function to extract text from PDF file
 def extract_text_from_pdf(file):
-    pdf_document = fitz.open(stream=file.read(), filetype="pdf")
+    # pdf_document = fitz.open(stream=file.read(), filetype="pdf")
+    pdf_document = pymupdf.open(stream=file.read(), filetype="pdf")
     text = ""
     for page_num in range(len(pdf_document)):
         page = pdf_document.load_page(page_num)

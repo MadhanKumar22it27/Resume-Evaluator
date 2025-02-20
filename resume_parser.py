@@ -1,10 +1,11 @@
 import re
-import fitz
+# import fitz
 import base64
 import streamlit as st
 import spacy
 import csv
 import nltk
+import pymupdf
 
 import spacy
 import os
@@ -184,7 +185,8 @@ def suggest_position(verbs):
 
 
 def extract_resume_info_from_pdf(uploaded_file):
-    doc = fitz.open(stream=uploaded_file.read(), filetype="pdf")
+    # doc = fitz.open(stream=uploaded_file.read(), filetype="pdf")
+    doc = pymupdf.open(stream=uploaded_file.read(), filetype="pdf")
     text = ""
     for page_num in range(doc.page_count):
         page = doc[page_num]
