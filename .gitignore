@@ -1,0 +1,13 @@
+# Ignore virtual environments
+env/
+venv/
+
+# Ignore system files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore Render and IDE files
+.DS_Store
+.vscode/
+.idea/
