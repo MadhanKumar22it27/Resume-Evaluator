@@ -6,18 +6,16 @@ import spacy
 import csv
 import nltk
 import pymupdf
-
-import spacy
 import os
+from spacy.cli import download
 
-import spacy
-import os
-
+# Download model if not available
 try:
-    nlp = spacy.load("en_core_web_sm")
+    nlp = spacy.load("en_core_web_lg")
 except OSError:
-    os.system("python -m spacy download en_core_web_sm")
-    nlp = spacy.load("en_core_web_sm")
+    download("en_core_web_lg")
+    nlp = spacy.load("en_core_web_lg")
+
     print("SpaCy Model Loaded Successfully!")
 # Additional libraries
 nltk.download('punkt')
